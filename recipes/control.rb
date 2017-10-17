@@ -25,10 +25,10 @@ package_version = "#{version_str}-#{node['riak_cs']['package']['version']['build
 case node['platform_family']
 when "debian"
   apt_repository "basho" do
-    uri "http://apt.basho.com"
-    distribution (node['lsb']['codename'] == "raring" ? "precise" : node['lsb']['codename'])
+    uri "https://packagecloud.io/basho/riak/ubuntu/"
+    distribution 'xenial'
     components ["main"]
-    key "http://apt.basho.com/gpg/basho.apt.key"
+    key "https://packagecloud.io/basho/riak/gpgkey"
   end
 
   package "riak-cs-control" do
